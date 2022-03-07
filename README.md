@@ -36,3 +36,23 @@ val producer = new KafkaProducer[String, String](props)
 ```scala
 val metadata = producer.send(new ProducerRecord[String, String](kafkaTopic, "JOB #" + jobID + " Started"))
 ```
+
+### Dependency: For POM.xml Project (Maven)
+```xml
+ <dependency>
+    <groupId>org.apache.kafka</groupId>
+    <artifactId>kafka-clients</artifactId>
+    <version>2.0.0</version>
+</dependency>
+```
+
+### Dependency: For build.sbt Project (SBT)
+```sbt
+libraryDependencies += "org.apache.kafka" % "kafka-clients" % "2.0.0"
+```
+
+### Logger Recommendation
+https://index.scala-lang.org/raistlintao/scalalogger/logger/1.0.0?binaryVersion=_3
+
+### Spark Model Helper
+https://index.scala-lang.org/raistlintao/sparkmodelhelper/sparkmodelhelper/1.2.0?binaryVersion=_2.12
