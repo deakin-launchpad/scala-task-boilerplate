@@ -36,7 +36,7 @@ object App {
 
     println("Start Task")
     // 3. Start update to Kafka
-    val metadata = producer.send(new ProducerRecord[String, String](kafkaTopic, "JOB #" + jobID + " Started"))
+    val metadata = producer.send(new ProducerRecord[String, String](kafkaTopic, "{'insightFileURL': '', 'jobid': '622ff7c2d257c6b8b6f0a333', 'jobStatus': 'started'}"))
     println("Sent meta(partition=" +
       metadata.get().partition() +
       ", offset= " +
@@ -45,8 +45,7 @@ object App {
     Thread.sleep(5000)
 
     // 5. Update Jobstatus again when finished.
-    producer.send(new ProducerRecord[String, String](kafkaTopic, "JOB #" + jobID + " Finished"))
-
+    producer.send(new ProducerRecord[String, String](kafkaTopic, "{'insightFileURL': 'https://data-shop-backend.s3.ap-southeast-2.amazonaws.com/files/docs/original/Docs_AroAZ2dGE1ab.png', 'jobid': '622ff7c2d257c6b8b6f0a333', 'jobStatus': 'success'}"))
     // 6. Clean Up
     producer.flush()
     producer.close()
